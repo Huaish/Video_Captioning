@@ -3,20 +3,21 @@
 
 <head>
 
-    <title>Simple Website</title>
+    <title>Video Captioning</title>
     
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/circle.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></link>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}"></link>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/circle.css') }}"></link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script>
@@ -357,22 +358,22 @@
             <h3>Lorem ipsum dolor sit amet, idque omnes ex eos putent gubergren in sea</h3>
             
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery1.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery1.jpg') }}" class="img-responsive">
 			</div>
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery2.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery2.jpg') }}" class="img-responsive">
 			</div>
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery3.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery3.jpg') }}" class="img-responsive">
 			</div>
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery4.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery4.jpg') }}" class="img-responsive">
 			</div>
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery5.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery5.jpg') }}" class="img-responsive">
 			</div>
 			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="images/gallery6.jpg" class="img-responsive">
+				<img src="{{ url_for('static', filename='images/gallery6.jpg') }}" class="img-responsive">
 			</div>
     	</div>
     </section>
