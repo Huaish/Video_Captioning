@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-rm ${HOME}/VLCAP/results/*
 export DIR_PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+rm ${DIR_PWD}/results/*
 res_dir="model"
 split_name="test"
 data_path="${DIR_PWD}/data.json"
