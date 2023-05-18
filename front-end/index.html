@@ -17,6 +17,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,6 +60,9 @@
 
         <nav class="navbar-default" style="border-radius:0;"  id="navbar">
             <div class="container-fluid">
+                <p uk-margin>
+                    <button class="uk-button uk-button-default" onclick="getCaption()">Get Caption</button>
+                </p>
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
