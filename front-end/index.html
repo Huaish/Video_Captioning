@@ -56,11 +56,33 @@
                 top: 0;
                 width: 100%;
                 }
+            .caption-container div:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            #js-progressbar::-webkit-progress-bar {
+                background-color: #f0f0f0;
+            }
+
+            #js-progressbar::-webkit-progress-value {
+                background-color: #909090;
+            }
 
         </style>
 </head>
 
 <body>
+    <!-- This is the modal -->
+    <div id="my-id" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-outside" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Video Caption</h2>
+            <progress id="js-progressbar" class="uk-progress" value="10" max="100"></progress>
+            <div id = "caption" class="caption-container"></div>
+        </div>
+    </div>
+
 
     <header>
 
@@ -144,40 +166,37 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-check"></i>Covers Everything</h4>
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_FsS_NCZEfaI')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/FsS_NCZEfaI?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-gift"></i>Everything you need</h4>
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_HWV_ccmZVPA')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/HWV_ccmZVPA?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_E9R1H8xRIW8')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/E9R1H8xRIW8?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
-    
     <section id="content2">
     	<div class="opacity_overlay">
     		<div class="container-fluid" style="padding: 0;">
