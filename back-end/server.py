@@ -36,6 +36,18 @@ def getCaption(video_id):
                 return response
         else:
             return {}
+        
+@app.route('/video_ids', methods=['GET'])
+def getVideoIds():
+    data_file = "anet_data.json"
+
+    with open(data_file) as f:
+        data = json.load(f)
+
+    video_ids = list(data.keys())
+
+    response = {"video_ids": video_ids}
+    return json.dumps(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
