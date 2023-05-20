@@ -1,6 +1,8 @@
 import json
 from flask import Flask, render_template
 import subprocess
+import json
+import subprocess
 
 app = Flask(__name__, template_folder='../front-end', static_folder='../front-end/static')
 
@@ -9,8 +11,7 @@ def index():
     return render_template("index.html")
 
 @app.route('/caption/<video_id>', methods=['GET'])
-def get_caption():
-    video_id = video_id
+def getCaption(video_id):
     data_file = "anet_data.json"
     output_file = "data.json"
 
@@ -22,7 +23,7 @@ def get_caption():
             json.dump(video_data, f, indent=4)
     else:
         print("Video ID not found in the JSON data.")
-        
+
     p = subprocess.run(['./translate.sh'])
     if p.returncode == 0:
         with open('results/results.json') as f:
@@ -34,16 +35,7 @@ def get_caption():
                 response = json.dumps(extracted_data, indent=4)
                 return response
         else:
-            print("Results data not found in the JSON file.")
             return {}
-
-
-
-
-
-    
-
 
 if __name__ == '__main__':
     app.run(debug=True)
-    # caption = get_caption("v_lVu-4SKcb4c")
