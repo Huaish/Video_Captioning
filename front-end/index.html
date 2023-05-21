@@ -14,9 +14,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.17/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.17/dist/js/uikit-icons.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,11 +56,36 @@
                 top: 0;
                 width: 100%;
                 }
+            .caption-container div:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            .btn-center {
+                text-align: center;
+            }
+            #js-progressbar::-webkit-progress-bar {
+                background-color: #f0f0f0;
+            }
+
+            #js-progressbar::-webkit-progress-value {
+                background-color: #909090;
+            }
 
         </style>
 </head>
 
 <body>
+    <!-- This is the modal -->
+    <div id="my-id" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-outside" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Video Caption</h2>
+            <progress id="js-progressbar" class="uk-progress" value="10" max="100"></progress>
+            <div id = "caption" class="caption-container"></div>
+        </div>
+    </div>
+
 
     <header>
 
@@ -66,7 +98,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" style="font-family: 'Playball', cursive; font-size: 28px; color: #fff;">Simple Website</a>
+                    <a class="navbar-brand" href="#" style="font-family: 'Playball', cursive; font-size: 28px; color: #fff;">Image Processing</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,12 +107,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">HOMEPAGE</a>
                         </li>
-                        <li><a href="#content2">ABOUT US</a>
+                        <li><a href="#footer">ABOUT US</a>
                         </li>
-                        <li><a href="#content6">PORTFOLIO</a>
+                        <!-- <li><a href="#content6">PORTFOLIO</a>
                         </li>
                         <li><a href="#content8">PRICING</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -104,7 +136,11 @@
                 font-weight: 300;
                 font-family: 'Rubik', sans-serif;
             }
-
+            .uk-button-default {
+                background-color: transparent;
+                color: #333;
+                border: none;
+            }
 
         </style>
 
@@ -115,8 +151,6 @@
             <div class="info">
                 <h2>Video Captioning</h2>
                 <br>
-                <h3>Lorem ipsum dolor sit amet</h3>
-                <br>
                 <a href="#content"><button type="button" id="proceed">Learn More</button></a>
             </div>
         </div>
@@ -124,157 +158,131 @@
 
     <section id="content">
         <div class="container">
-            <h2>Aperiam convenire ocurreret</h2>
-            <h3>Lorem ipsum dolor sit amet, idque omnes ex eos putent gubergren in sea</h3>
+            <h2>DEMO</h2>
 
             <div class="boxes">
                 <div class="col-md-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-check"></i>Covers Everything</h4>
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_FsS_NCZEfaI')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/FsS_NCZEfaI?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-gift"></i>Everything you need</h4>
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_HWV_ccmZVPA')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/HWV_ccmZVPA?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="wow flipInX"><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_E9R1H8xRIW8')">Get Caption</button>
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <iframe src="https://www.youtube-nocookie.com/embed/E9R1H8xRIW8?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_qXi05KUFOSk')">Get Caption</button>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.youtube-nocookie.com/embed/qXi05KUFOSk?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_7NG6UrY2Foo')">Get Caption</button>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.youtube-nocookie.com/embed/7NG6UrY2Foo?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading btn-center">
+                            <button uk-toggle="target: #my-id" class="uk-button uk-button-default" onclick="getCaption('v_2Sev8z4P7pE')">Get Caption</button>
+                        </div>
+                        <div class="panel-body">
+                            <iframe src="https://www.youtube-nocookie.com/embed/2Sev8z4P7pE?autoplay=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" width="1920" height="1080" allowfullscreen uk-responsive uk-video="automute: true"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
-    
-    <section id="content2">
+    <!-- <section id="content2">
     	<div class="opacity_overlay">
-    		<div class="container-fluid" style="padding: 0;">
-    			<div class="col-md-3 col-sm-6">
+    			<div class="col-md-15">
     				<div class="feature-item text-center">
-    					<span class="glyphicon glyphicon-edit glyphicon-lg"></span>
+    					<span class="glyphicon glyphicon-thumbs-up glyphicon-lg"></span>
     					<h6>Easy To Edit</h6>
     					<hr>
     					<p>Lorem ipsum dolor sit amet, nemore salutatus ex eam, ei legimus comprehensam ius brute vivendum.</p>
     				</div>
     			</div>
-    			<div class="col-md-3 col-sm-6">
-    				<div class="feature-item text-center">
-    					<span class="glyphicon glyphicon-compressed glyphicon-lg"></span>
-    					<h6>Trendy Design</h6>
-    					<hr>
-    					<p>Lorem ipsum dolor sit amet, nemore salutatus ex eam, ei legimus comprehensam ius brute vivendum.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-3 col-sm-6">
-    				<div class="feature-item text-center">
-    					<span class="glyphicon glyphicon-camera glyphicon-lg"></span>
-    					<h6>Photography</h6>
-    					<hr>
-    					<p>Lorem ipsum dolor sit amet, nemore salutatus ex eam, ei legimus comprehensam ius brute vivendum.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-3 col-sm-6">
-    				<div class="feature-item text-center">
-    					<span class="glyphicon glyphicon-modal-window glyphicon-lg"></span>
-    					<h6>Beautifully Coded</h6>
-    					<hr>
-    					<p>Lorem ipsum dolor sit amet, nemore salutatus ex eam, ei legimus comprehensam ius brute vivendum.</p>
-    				</div>
-    			</div>
-    		</div>
+    			
     	</div>
-    </section>
+    </section> -->
 
     <section id="content3">
         <div class="information">
             <div class="container">
                 <div class="row">
                     <div class="title">
-           				<h2>Omittam Legendos Convenire</h2>
+           				<h2>Video captioning application</h2>
                     </div>
                     <br>
                     <br>
                     <div class="col-md-6">
                         <div class="blockquote-box clearfix">
                             <div class="square pull-left">
-                                <span class="glyphicon glyphicon-home glyphicon-lg"></span>
+                                <span class="glyphicon glyphicon-volume-off glyphicon-lg"></span>
                             </div>
-                            <h4>
-                    Home</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
+                            <h4>Accessibility for Deaf or hard of hearing viewers </h4>
                         </div>
                         <div class="blockquote-box blockquote-primary clearfix">
                             <div class="square pull-left">
-                                <span class="glyphicon glyphicon-envelope glyphicon-lg"></span>
+                                <span class="glyphicon glyphicon-facetime-video glyphicon-lg"></span>
                             </div>
-                            <h4>
-                    Mail</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
+                            <h4>Robotic vision</h4>
                         </div>
                         <div class="blockquote-box blockquote-success clearfix">
                             <div class="square pull-left">
-                                <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                                <span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
                             </div>
-                            <h4>
-                    Users</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
+                            <h4>Incident report for surveillance</h4>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="blockquote-box blockquote-info clearfix">
                             <div class="square pull-left">
-                                <span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
+                                <span class="glyphicon glyphicon-eye-open glyphicon-lg"></span>
                             </div>
-                            <h4>
-                    Information</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
+                            <br>
+                            <h4>Assist for blinded</h4>
                         </div>
                         <div class="blockquote-box blockquote-warning clearfix">
                             <div class="square pull-left">
-                                <span class="glyphicon glyphicon-signal glyphicon-lg"></span>
-                            </div>
-                            <h4>
-                    Charts</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
-                        </div>
-                        <div class="blockquote-box blockquote-danger clearfix">
-                            <div class="square pull-left">
                                 <span class="glyphicon glyphicon-globe glyphicon-lg"></span>
                             </div>
-                            <h4>
-                   Global</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                            </p>
+                            <br>
+                            <h4>Multimedia search</h4>
+                            
                         </div>
                     </div>
                 </div>
@@ -283,33 +291,14 @@
     
     <section id="content4">
     	<div class="container">
-    		<h3>Lorem ipsum dolor sit amet</h3>
+    		<h3>More Video Captioning ... </h3>
     		<hr>
-    		<div class="product-info">
-    			<div class="col-md-4 col-sm-6">
-    				<div class="left-text pull-left">
-    					<h5>New Products</h5>
-    					<h4>Increase Profits</h4>
-    					<hr>
-    					<p>Vocibus persecuti incorrupte no qui, sed in euismod appareat democritum. Ea alienum apeirian eam, pro porro inermis ut.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4 col-sm-6">
-    				<div class="left-text pull-left">
-    					<h5>New Products</h5>
-    					<h4>Increase Reputation</h4>
-    					<hr>
-    					<p>Vocibus persecuti incorrupte no qui, sed in euismod appareat democritum. Ea alienum apeirian eam, pro porro inermis ut.</p>
-    				</div>
-    			</div>
-    			<div class="col-md-4 col-sm-6">
-    				<div class="left-text pull-left">
-    					<h5>New Products</h5>
-    					<h4>Increase Business</h4>
-    					<hr>
-    					<p>Vocibus persecuti incorrupte no qui, sed in euismod appareat democritum. Ea alienum apeirian eam, pro porro inermis ut.</p>
-    				</div>
-    			</div>
+    		<div class="product-info btn-center">
+                <button class="uk-button uk-button-default" type="button">Get Caption</button>
+                <div uk-dropdown>
+                    <ul class="uk-nav uk-dropdown-nav">
+                    </ul>
+                </div>
     		</div>
     	</div>
     </section>
@@ -317,16 +306,16 @@
     <section id="content5">
     	<div class="opacity_overlay">
     		<div class="container">
-    			<h3>Our Skills</h3>
+    			<h3>Skills</h3>
     			<div class="col-md-4 col-sm-6">
-    				<div class="c100 p25">
-						<span>25%</span>
+    				<div class="c100 p35">
+						<span>35%</span>
 						<div class="slice">
 							<div class="bar"></div>
 							<div class="fill"></div>
 						</div>
 					</div>
-					<h4>JQuery</h4>
+					<h4>Image Processing</h4>
     			</div>
     			<div class="col-md-4 col-sm-6">
     				<div class="c100 p50 green">
@@ -336,119 +325,20 @@
 							<div class="fill"></div>
 						</div>
 					</div>
-					<h4>CSS</h4>
+					<h4>Machine Learning</h4>
     			</div>
     			<div class="col-md-4 col-sm-6">
-    				<div class="c100 p75 orange">
-						<span>75%</span>
+    				<div class="c100 p15 orange">
+						<span>15%</span>
 						<div class="slice">
 							<div class="bar"></div>
 							<div class="fill"></div>
 						</div>
 					</div>
-					<h4>HTML</h4>
+					<h4>Web Develop</h4>
     			</div>
     		</div>
     	</div>
-    </section>
-    
-    <section id="content6">
-    	<div class="container">
-            <h2>Aperiam convenire ocurreret</h2>
-            <h3>Lorem ipsum dolor sit amet, idque omnes ex eos putent gubergren in sea</h3>
-            
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery1.jpg') }}" class="img-responsive">
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery2.jpg') }}" class="img-responsive">
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery3.jpg') }}" class="img-responsive">
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery4.jpg') }}" class="img-responsive">
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery5.jpg') }}" class="img-responsive">
-			</div>
-			<div class="col-md-4 col-sm-6 col-xs-6">
-				<img src="{{ url_for('static', filename='images/gallery6.jpg') }}" class="img-responsive">
-			</div>
-    	</div>
-    </section>
-    
-    <section id="content7">
-    	<div class="conatiner-fluid" style="padding: 0;">
-    		<h2>Are you ready for the ultimate upgrade?</h2>
-    	</div>
-    </section>
-    
-    <section id="content8">
-        <div id="pricing-table">
-            <div class="container">
-                <div class="row">
-                    <div class="pricing">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="pricing-table">
-                                <div class="pricing-header">
-                                    <p class="pricing-title">Free Plan</p>
-                                    <p class="pricing-rate"><sup>$</sup> 0 <span>/Mo.</span></p>
-                                    <a href="#" class="btn btn-custom">And Get Free Month</a>
-                                </div>
-
-                                <div class="pricing-list">
-                                    <ul>
-                                        <li><i class="fa fa-envelope"></i>1,000 messages</li>
-                                        <li><i class="fa fa-signal"></i><span>limited</span> data</li>
-                                        <li><i class="fa fa-user"></i><span>limited</span> users</li>
-                                        <li><i class="fa fa-smile-o"></i>first 10 day free</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="pricing-table">
-                                <div class="pricing-header">
-                                    <p class="pricing-title">Business Plan</p>
-                                    <p class="pricing-rate"><sup>$</sup> 20 <span>/Mo.</span></p>
-                                    <a href="#" class="btn btn-custom">And Get Free Month</a>
-                                </div>
-
-                                <div class="pricing-list">
-                                    <ul>
-                                        <li><i class="fa fa-envelope"></i>10,000 messages</li>
-                                        <li><i class="fa fa-signal"></i><span>unlimited</span> data</li>
-                                        <li><i class="fa fa-user"></i><span>unlimited</span> users</li>
-                                        <li><i class="fa fa-smile-o"></i>first 10 day free</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="pricing-table">
-                                <div class="pricing-header">
-                                    <p class="pricing-title">Extended Plan</p>
-                                    <p class="pricing-rate"><sup>$</sup> 80 <span>/Mo.</span></p>
-                                    <a href="#" class="btn btn-custom">And Get Free Month</a>
-                                </div>
-
-                                <div class="pricing-list">
-                                    <ul>
-                                        <li><i class="fa fa-envelope"></i>10,0000 messages</li>
-                                        <li><i class="fa fa-signal"></i><span>unlimited</span> data</li>
-                                        <li><i class="fa fa-user"></i><span>unlimited</span> users</li>
-                                        <li><i class="fa fa-smile-o"></i>first 10 day free</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
     
     <hr>
@@ -471,21 +361,8 @@
                         	<div class="carousel-inner">
                             	<div class="active item">
                                 	<blockquote>
-                                    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                        <p>Unlock the power of video captioning for your content! Captions enhance accessibility, engage a wider audience, and improve user experience. With automated video captioning, you can save time and effort by generating accurate captions for your videos in no time. Expand your reach, improve SEO, and provide an inclusive viewing experience. </p>
                                 	</blockquote>
-                                	<div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
-                            	</div>
-                            	<div class="item">
-                                	<blockquote>
-                                    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                	</blockquote>
-                                	<div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
-                            	</div>
-                            	<div class="item">
-                                	<blockquote>
-                                    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
-                                	</blockquote>
-                                	<div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
                             	</div>
                         	</div>
                     	</div>
@@ -500,7 +377,9 @@
 			<div class="col-md-4 col-sm-6">
 				<h3>About Us</h3>
 				<hr>
-				<p>Lorem ipsum dolor sit amet, qui facilis epicuri at. Vis quando timeam ex, alia natum ut vix. At alii eros commune ius, discere nominati usu in, te vis dictas dolorum facilisi. Ei his semper laoreet suscipiantur.</p>
+                <p>40947007S 張欀齡</p>
+                <p>40947079S 陳姸心</p>
+                <p>41047902S 鄭淮薰</p>
 			</div>
 			<div class="col-md-4 col-sm-6">
 				<h3>Contact Info</h3>
@@ -508,16 +387,16 @@
 				<ul class="contact-list">
 					<li>
 						<p>
-							<i class="fa fa-home"></i>
-							Trafalgar Square, Westminster, London WC2N 5DN
-						</p>
-						<p>
-							<i class="fa fa-phone"></i>
-							0800 240 0905
+							<i class="fa fa-envelope-o"></i>
+							sss36592580@gmail.com
 						</p>
 						<p>
 							<i class="fa fa-envelope-o"></i>
-							support@template.com
+							yenhsinchen09@gmail.com
+						</p>
+						<p>
+							<i class="fa fa-envelope-o"></i>
+							zsisc.huaish@gmail.com
 						</p>
 					</li>
 				</ul>
@@ -532,7 +411,7 @@
 	</footer>
 	
 	<div id="copyright-part">
-		<p>&copy 2022 <span>Template</span> All Rights Reserved</p>
+		<p>&copy 2023 <span>Video Captioning</span> All Rights Reserved</p>
 	</div>
 
 
