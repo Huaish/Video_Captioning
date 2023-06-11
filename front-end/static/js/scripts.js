@@ -5,6 +5,15 @@ async function getCaption(video_id) {
     captionContainer.innerHTML = '';
     bar.style.display = 'block';
     bar.value = 0;
+    var animate = setInterval(function () {
+
+        bar.value += 3;
+
+        if (bar.value >= bar.max) {
+            clearInterval(animate);
+        }
+
+    }, 1500);
     console.log(video_id)
     console.log('getCaption() called');
     const response = await fetch('/caption/' + video_id);
@@ -22,21 +31,6 @@ async function getCaption(video_id) {
     });
     bar.style.display = 'none';
 }
-
-UIkit.util.ready(function () {
-    var bar = document.getElementById('js-progressbar');
-
-    var animate = setInterval(function () {
-
-        bar.value += 5;
-
-        if (bar.value >= bar.max) {
-            clearInterval(animate);
-        }
-
-    }, 1500);
-
-});
 
 async function fetchVideoIds() {
     const response = await fetch('/video_ids');
